@@ -95,8 +95,8 @@ update_config_file() { # $1 file  $2 key  $3 value
 }
 
 #  run floodlight commands
-floodlight_ctl() {  # $1 key  $2 value
-	floodlight_ctl.sh $1 $2
+floodlight() {  # $1 key  $2 value
+	floodlight_ctl.sh $1
 }
 
 #  write key=value to /configs/.user_config
@@ -162,12 +162,12 @@ done
 # Subscription listener runs continuously
 ${MOSQUITTO_SUB_BIN} -v -h "${MQTT_BROKER_HOST}" -p "${MQTT_BROKER_PORT}" -u "${MQTT_USERNAME}" -P "${MQTT_PASSWORD}" -t "${TOPIC_BASE}/#"  ${MOSQUITTOOPTS} | while read -r line ; do
   case $line in
-	"${TOPIC_BASE}/floodlight_on/set ON")
-      floodlight_ctl "ON" "100"
+	"${TOPIC_BASE}/floodlight/set ON")
+      floodlight "ON" "100"
 	;;
 
-	"${TOPIC_BASE}/floodlight_off/set OFF")
-      floodlight_ctl "OFF" ""
+	"${TOPIC_BASE}/floodlight/set OFF")
+      floodlight "OFF"
 	;;
 
 	"${TOPIC_BASE}/osd_time/set ON")
