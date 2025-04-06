@@ -167,7 +167,7 @@ ${MOSQUITTO_SUB_BIN} -v -h "${MQTT_BROKER_HOST}" -p "${MQTT_BROKER_PORT}" -u "${
 	;;
 
 	"${TOPIC_BASE}/floodlight_off/set OFF")
-      floodlight_ctl "OFF"
+      floodlight_ctl "OFF" ""
 	;;
 
 	"${TOPIC_BASE}/osd_time/set ON")
