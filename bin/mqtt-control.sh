@@ -94,6 +94,11 @@ update_config_file() { # $1 file  $2 key  $3 value
 	fi	
 }
 
+#  run floodlight commands
+floodlight_ctl() {  # $1 key  $2 value
+	floodlight_ctl.sh $1 $2
+}
+
 #  write key=value to /configs/.user_config
 update_icamera_config() {  # $1 key  $2 value
 	update_config_file ${ICAMERA_CONFIG} $1 $2
@@ -157,6 +162,14 @@ done
 # Subscription listener runs continuously
 ${MOSQUITTO_SUB_BIN} -v -h "${MQTT_BROKER_HOST}" -p "${MQTT_BROKER_PORT}" -u "${MQTT_USERNAME}" -P "${MQTT_PASSWORD}" -t "${TOPIC_BASE}/#"  ${MOSQUITTOOPTS} | while read -r line ; do
   case $line in
+	"${TOPIC_BASE}/floodlight_on/set ON")
+      floodlight_ctl "ON" "100"
+	;;
+
+	"${TOPIC_BASE}/floodlight_off/set OFF")
+      floodlight_ctl "OFF"
+	;;
+
 	"${TOPIC_BASE}/osd_time/set ON")
       update_icamera_config "osdSwitch" "1"
 	  # before device restarts, check that the configuration will result in the new desired state upon boot
