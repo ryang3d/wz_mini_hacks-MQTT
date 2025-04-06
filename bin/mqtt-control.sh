@@ -55,6 +55,7 @@
 MASTER_CONFIG="/opt/wz_mini/wz_mini.conf"
 ICAMERA_CONFIG="/configs/.user_config"
 MQTT_CONFIG="/media/mmc/mosquitto/mosquitto.conf"
+LIGHT_CONFIG="/media/mmc/mosquitto/light.config"
 # must support start,stop,restart params
 WEBSERVER_INIT_SCRIPT="/opt/wz_mini/etc/network.d/S10httpd"
 
@@ -163,11 +164,19 @@ done
 ${MOSQUITTO_SUB_BIN} -v -h "${MQTT_BROKER_HOST}" -p "${MQTT_BROKER_PORT}" -u "${MQTT_USERNAME}" -P "${MQTT_PASSWORD}" -t "${TOPIC_BASE}/#"  ${MOSQUITTOOPTS} | while read -r line ; do
   case $line in
 	"${TOPIC_BASE}/floodlight/set ON")
+      update_config_file LIGHT_CONFIG LIGHT 1
       floodlight "ON" "100"
+	  if [ ! -z "$(grep "LIGHT=1" ${LIGHT_CONFIG})" ]; then	  	
+	  	mqtt_publish "/lights/floodlight" "ON"	  
+	  fi	  
 	;;
 
 	"${TOPIC_BASE}/floodlight/set OFF")
+      update_config_file LIGHT_CONFIG LIGHT 0
       floodlight "OFF"
+	  if [ ! -z "$(grep "LIGHT=0" ${LIGHT_CONFIG})" ]; then	  	
+	  	mqtt_publish "/lights/floodlight" "OFF"	  
+	  fi	  
 	;;
 
 	"${TOPIC_BASE}/osd_time/set ON")
