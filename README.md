@@ -105,3 +105,10 @@ Writing camera configuration supported features:
 With the exception of playing a sound, updating the refresh rate and enabling or disabling the web console, ALL other changes in state require that the camera be rebooted before the change takes effect. This reboot is automatically done, but it does mean there is usually at least 5 seconds before the update takes effect. It also means that multiple update requests need to be spaced out with an appropriate delay to allow the camera to recycle before being able to accept the next request. Not ideal, but due to the limitations of the wz_mini_hack, the best we can do for now. 
 
 To access other, less frequently used configuration parameters, enable the web_console (starts httpd, port 80), added by the wz_mini_hacks project. This provides access to a rudimentary form via the browser for modifying all the configuration parameters. It also needs to reboot the camera to have the changes applied. Since the web console is not secured (no authentication options), generally keep it disabled and use MQTT instead (assuming the broker has been secured).
+
+## Future Plans (If/When time permits)
+
+- Add Spotlight Controls (maybe separate branch or project?)
+- Add Siren Controls
+- Add Floodlight/Siren Dimmer controls?
+- Who knows what else...
