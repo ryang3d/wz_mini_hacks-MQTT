@@ -1,6 +1,6 @@
-# Adding MQTT Status and Control Integration to a wz_mini_hack Installed Camera
+# Adding MQTT Status and Control Integration to a wz_mini_hack Installed Floodlight (v1)
 
-This project adds [Home Assistant](https://home-assistant.io) integration via MQTT to Wyze Cam V3.
+This project adds [Home Assistant](https://home-assistant.io) integration via MQTT to Wyze Cam V3 with attached Floodlight.
 
 ![Wyze Cam V3](wyze_cam_v3.jpg)
 
