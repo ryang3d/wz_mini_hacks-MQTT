@@ -163,7 +163,7 @@ done
 ${MOSQUITTO_SUB_BIN} -v -h "${MQTT_BROKER_HOST}" -p "${MQTT_BROKER_PORT}" -u "${MQTT_USERNAME}" -P "${MQTT_PASSWORD}" -t "${TOPIC_BASE}/#"  ${MOSQUITTOOPTS} | while read -r line ; do
   case $line in
 	"${TOPIC_BASE}/lights/floodlight/set ON")
-      floodlight "ON" "100"
+      floodlight "ON 100"
       mqtt_publish "/lights/floodlight" "ON"
 	;;
 
