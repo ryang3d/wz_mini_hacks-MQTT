@@ -95,7 +95,7 @@ update_config_file() { # $1 file  $2 key  $3 value
 }
 
 #  run floodlight commands
-floodlight() {  # $1 key  $2 value
+floodlight() {  # $1 value
 	floodlight_ctl.sh $1
 }
 
