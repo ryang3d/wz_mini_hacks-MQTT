@@ -164,16 +164,16 @@ done
 ${MOSQUITTO_SUB_BIN} -v -h "${MQTT_BROKER_HOST}" -p "${MQTT_BROKER_PORT}" -u "${MQTT_USERNAME}" -P "${MQTT_PASSWORD}" -t "${TOPIC_BASE}/#"  ${MOSQUITTOOPTS} | while read -r line ; do
   case $line in
 	"${TOPIC_BASE}/lights/floodlight/set ON")
-      update_config_file ${LIGHT_CONFIG} "LIGHT" "1"
       floodlight "ON" "100"
+          update_config_file ${LIGHT_CONFIG} "LIGHT" "1"
 	  if [ ! -z "$(grep "LIGHT=1" ${LIGHT_CONFIG})" ]; then	  	
 	  	mqtt_publish "/lights/floodlight" "ON"	  
 	  fi	  
 	;;
 
 	"${TOPIC_BASE}/lights/floodlight/set OFF")
-      update_config_file ${LIGHT_CONFIG} "LIGHT" "0"
       floodlight "OFF"
+          update_config_file ${LIGHT_CONFIG} "LIGHT" "0"
 	  if [ ! -z "$(grep "LIGHT=0" ${LIGHT_CONFIG})" ]; then	  	
 	  	mqtt_publish "/lights/floodlight" "OFF"	  
 	  fi	  
