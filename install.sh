@@ -21,6 +21,7 @@ scp -i ${WYZECAM_KEY} ./installer/* root@${WYZECAMV3_HOST}:/media/mmc/mosquitto/
 scp -i ${WYZECAM_KEY} ./bin/* root@${WYZECAMV3_HOST}:/media/mmc/mosquitto/bin
 scp -i ${WYZECAM_KEY} ./lib/* root@${WYZECAMV3_HOST}:/media/mmc/mosquitto/lib
 scp -i ${WYZECAM_KEY} mosquitto.conf root@${WYZECAMV3_HOST}:/media/mmc/mosquitto
+scp -i ${WYZECAM_KEY} floodlight_ctl.sh root@${WYZECAMV3_HOST}:/opt/wz_mini/bin
 
 echo "Installing MQTT client on camera..."
 ssh -i ${WYZECAM_KEY} root@${WYZECAMV3_HOST} '/media/mmc/mosquitto/installer/setup.sh'
