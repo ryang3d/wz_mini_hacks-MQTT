@@ -5,6 +5,7 @@
 
 # Control camera state via MQTT
 # Supported features:
+#   /lights/floodlight/set ON|OFF
 # 	/leds/indicator/set ON|OFF
 # 	/osd_time/set ON|OFF
 # 	/night_mode/set ON|OFF
