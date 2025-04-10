@@ -1,6 +1,6 @@
-# Adding MQTT Status and Control Integration to a wz_mini_hack Installed Floodlight (v1)
+# Adding MQTT Status and Control Integration to a wz_mini_hack Installed Spotlight (v1)
 
-This project adds [Home Assistant](https://home-assistant.io) integration via MQTT to Wyze Cam V3 with attached Floodlight.
+This project adds [Home Assistant](https://home-assistant.io) integration via MQTT to Wyze Cam V3 with attached Spotlight.
 
 ![Wyze Cam V3](wyze_cam_v3.jpg)
 
@@ -110,5 +110,5 @@ To access other, less frequently used configuration parameters, enable the web_c
 
 - Add Spotlight Controls (maybe separate branch or project?)
 - Add Siren Controls
-- Add Floodlight/Siren Dimmer controls?
+- Add Spotlight/Siren Dimmer controls?
 - Who knows what else...
