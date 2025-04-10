@@ -173,7 +173,6 @@ ${MOSQUITTO_SUB_BIN} -v -h "${MQTT_BROKER_HOST}" -p "${MQTT_BROKER_PORT}" -u "${
       mqtt_publish "/siren" "OFF"
 	;;
 
-
 	"${TOPIC_BASE}/lights/floodlight/set ON")
       floodlight "ON 100"
       mqtt_publish "/lights/floodlight" "ON"
