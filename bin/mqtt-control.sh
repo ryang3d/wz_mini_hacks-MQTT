@@ -163,16 +163,6 @@ done
 # Subscription listener runs continuously
 ${MOSQUITTO_SUB_BIN} -v -h "${MQTT_BROKER_HOST}" -p "${MQTT_BROKER_PORT}" -u "${MQTT_USERNAME}" -P "${MQTT_PASSWORD}" -t "${TOPIC_BASE}/#"  ${MOSQUITTOOPTS} | while read -r line ; do
   case $line in
-	"${TOPIC_BASE}/siren/set ON")
-      mqtt_publish "/play" "/system/local/siren.wav" "100"
-      mqtt_publish "/siren" "ON"
-	;;
-
-	"${TOPIC_BASE}/siren/set OFF")
-      mqtt_publish "/play" "/system/local/siren.wav" "0"
-      mqtt_publish "/siren" "OFF"
-	;;
-
 	"${TOPIC_BASE}/lights/spotlight/set ON")
       spotlight "on_high"
       mqtt_publish "/lights/spotlight" "ON"
