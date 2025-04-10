@@ -5,7 +5,7 @@
 
 # Control camera state via MQTT
 # Supported features:
-#   /lights/floodlight/set ON|OFF
+#   /lights/spotlight/set ON|OFF
 # 	/leds/indicator/set ON|OFF
 # 	/osd_time/set ON|OFF
 # 	/night_mode/set ON|OFF
@@ -95,9 +95,9 @@ update_config_file() { # $1 file  $2 key  $3 value
 	fi	
 }
 
-#  run floodlight commands
-floodlight() {  # $1 value
-	floodlight_ctl.sh $1
+#  run spotlight commands
+spotlight() {  # $1 value
+	spotlight_ctl.sh $1
 }
 
 #  write key=value to /configs/.user_config
@@ -173,14 +173,14 @@ ${MOSQUITTO_SUB_BIN} -v -h "${MQTT_BROKER_HOST}" -p "${MQTT_BROKER_PORT}" -u "${
       mqtt_publish "/siren" "OFF"
 	;;
 
-	"${TOPIC_BASE}/lights/floodlight/set ON")
-      floodlight "ON 100"
-      mqtt_publish "/lights/floodlight" "ON"
+	"${TOPIC_BASE}/lights/spotlight/set ON")
+      spotlight "on_high"
+      mqtt_publish "/lights/spotlight" "ON"
 	;;
 
-	"${TOPIC_BASE}/lights/floodlight/set OFF")
-      floodlight "OFF"
-      mqtt_publish "/lights/floodlight" "OFF"
+	"${TOPIC_BASE}/lights/spotlight/set OFF")
+      spotlight "off"
+      mqtt_publish "/lights/spotlight" "OFF"
 	;;
 
 	"${TOPIC_BASE}/osd_time/set ON")
